@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type {Metadata} from "next";
+import {Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Los Girasoles - Salón de Eventos para Quinceañeras | Arequipa",
-  description: "Salón de eventos Los Girasoles, innovando para sorprenderte. Paquetes personalizables para quinceañeras desde S/. 6,999. Capacidad hasta 170 personas. Ubicados en Socabaya, Arequipa.",
+  title: "Los Girasoles - Salón de Eventos para todo tipo de reuniones inolvidables | Arequipa",
+  description: "Salón de eventos en Arequipa con tres ambientes, capacidad hasta 170 personas y paquetes personalizables. Ideal para matrimonios, promociones, quinceaños y eventos sociales. Ubicados en Socabaya, Arequipa.",
   keywords: ["salón de eventos", "quinceañera", "Arequipa", "eventos", "fiestas", "Los Girasoles", "Socabaya"],
 };
 
@@ -25,11 +25,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <body
+      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+    >
+    {children}
+    </body>
     </html>
   );
 }
