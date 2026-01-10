@@ -144,9 +144,20 @@ export default function Footer() {
           </div>
 
           {/* Copyright */}
-          <div className="text-center">
+          <div className="text-center space-y-2">
             <p className="text-sm text-gray-400">
               © {new Date().getFullYear()} Los Girasoles - Salón de Eventos. Todos los derechos reservados.
+            </p>
+            <p className="text-xs text-gray-500">
+              Desarrollado por{' '}
+              <a
+                href="https://www.miempresa360.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-yellow-400 hover:text-yellow-300 transition-colors duration-200 font-medium"
+              >
+                Mi Empresa 360
+              </a>
             </p>
           </div>
         </div>
