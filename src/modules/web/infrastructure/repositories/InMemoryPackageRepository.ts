@@ -8,6 +8,7 @@ const packages: Package[] = [
     slug: 'regular',
     price: 6999,
     description: 'Paquete perfecto para comenzar a celebrar tu quinceañera especial con elegancia y estilo',
+    heroImage: 'https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=1920&q=80',
     capacity: {
       total: 70,
       adults: 30,
@@ -82,6 +83,7 @@ const packages: Package[] = [
     slug: 'intermedio',
     price: 9999,
     description: 'Experiencia mejorada con video profesional, cabinas de fotos y servicios ampliados',
+    heroImage: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80',
     capacity: {
       total: 100,
       adults: 40,
@@ -160,6 +162,7 @@ const packages: Package[] = [
     slug: 'premium',
     price: 12999,
     description: 'Experiencia completa con event planner, fotografía profesional, coreógrafo y amenidades premium',
+    heroImage: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1920&q=80',
     capacity: {
       total: 130,
       adults: 50,
@@ -251,6 +254,7 @@ const packages: Package[] = [
     slug: 'top-golden',
     price: 16999,
     description: 'Paquete de lujo con 2 DJs profesionales, coreografía avanzada, catering gourmet y amenidades exclusivas',
+    heroImage: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1920&q=80',
     capacity: {
       total: 150,
       adults: 60,
@@ -338,6 +342,7 @@ const packages: Package[] = [
     slug: 'top-platinum',
     price: 21999,
     description: 'La experiencia definitiva de quinceañera con todo lo que necesitas en esta fecha tan especial',
+    heroImage: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80',
     capacity: {
       total: 170,
       adults: 70,
@@ -429,6 +434,7 @@ const packages: Package[] = [
     slug: 'basico-top-xv',
     price: 7500,
     description: 'Paquete especial de temporada con DJ profesional, efectos completos y pre sesión de fotos como regalo',
+    heroImage: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1920&q=80',
     capacity: {
       total: 100,
       adults: 30,

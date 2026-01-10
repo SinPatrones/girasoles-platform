@@ -18,6 +18,7 @@ export interface Package {
   slug: string;
   price: number;
   description: string;
+  heroImage: string;
   capacity: {
     total: number;
     adults: number;

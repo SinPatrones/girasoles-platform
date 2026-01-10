@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Users, Clock, CheckCircle2, Phone, Star } from 'lucide-react';
 import { Package } from '@/modules/web/domain/models/Package';
@@ -28,8 +29,20 @@ export default function PackageDetail({ package: pkg }: PackageDetailProps) {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-24 pb-12 bg-gradient-to-br from-yellow-500 via-yellow-600 to-orange-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative pt-24 pb-12 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={pkg.heroImage}
+            alt={`Fondo ${pkg.name}`}
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/90 via-yellow-700/85 to-orange-600/90" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/#paquetes"
             className="inline-flex items-center space-x-2 text-white hover:text-yellow-100 transition-colors duration-200 mb-8"
@@ -73,39 +86,50 @@ export default function PackageDetail({ package: pkg }: PackageDetailProps) {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="bg-white/10 backdrop-blur-md rounded-2xl p-8 text-white"
+              className="relative group"
             >
-              <h3 className="text-2xl font-bold mb-6">Detalles del Evento</h3>
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Users className="w-6 h-6" />
+              {/* Glassmorphism Card */}
+              <div className="backdrop-blur-xl bg-white/20 border border-white/30 rounded-2xl p-8 text-white shadow-2xl shadow-black/20">
+                {/* Decorative gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent rounded-2xl opacity-50" />
+
+                <div className="relative z-10">
+                  <h3 className="text-2xl font-bold mb-6 drop-shadow-lg">Detalles del Evento</h3>
+                  <div className="space-y-6">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-white/30 backdrop-blur-sm rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg border border-white/40">
+                        <Users className="w-6 h-6 drop-shadow" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-lg drop-shadow">Capacidad Total</p>
+                        <p className="text-yellow-50">{pkg.capacity.total} personas</p>
+                        <p className="text-sm text-yellow-50">
+                          {pkg.capacity.adults} adultos / {pkg.capacity.youth} jóvenes
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-white/30 backdrop-blur-sm rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg border border-white/40">
+                        <Clock className="w-6 h-6 drop-shadow" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-lg drop-shadow">Duración</p>
+                        <p className="text-yellow-50">{pkg.duration}</p>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-semibold text-lg">Capacidad Total</p>
-                    <p className="text-yellow-100">{pkg.capacity.total} personas</p>
-                    <p className="text-sm text-yellow-100">
-                      {pkg.capacity.adults} adultos / {pkg.capacity.youth} jóvenes
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-lg">Duración</p>
-                    <p className="text-yellow-100">{pkg.duration}</p>
-                  </div>
+                  <a
+                    href="tel:941415631"
+                    className="mt-8 w-full bg-white text-yellow-600 px-6 py-4 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center space-x-2 group hover:scale-[1.02]"
+                  >
+                    <Phone className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
+                    <span>Reservar Ahora</span>
+                  </a>
                 </div>
               </div>
-              <a
-                href="tel:941415631"
-                className="mt-8 w-full bg-white text-yellow-600 px-6 py-4 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center space-x-2 group"
-              >
-                <Phone className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
-                <span>Reservar Ahora</span>
-              </a>
+
+              {/* Animated glow effect on hover */}
+              <div className="absolute inset-0 -z-10 bg-gradient-to-br from-white/20 via-yellow-200/20 to-orange-200/20 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300" />
             </motion.div>
           </div>
         </div>
