@@ -2,13 +2,14 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, User, Mail, Phone, MessageSquare } from 'lucide-react';
+import { Send, User, Mail, Phone, MessageSquare, Calendar } from 'lucide-react';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
+    eventDate: '',
     message: '',
   });
 
@@ -28,7 +29,7 @@ export default function ContactForm() {
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitStatus('success');
-      setFormData({ name: '', email: '', phone: '', message: '' });
+      setFormData({ name: '', email: '', phone: '', eventDate: '', message: '' });
 
       setTimeout(() => {
         setSubmitStatus('idle');
@@ -116,6 +117,26 @@ export default function ContactForm() {
               required
               className="block w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-200 outline-none"
               placeholder="999 999 999"
+            />
+          </div>
+        </div>
+
+        {/* Event Date Input */}
+        <div className="relative">
+          <label htmlFor="eventDate" className="block text-sm font-medium text-gray-700 mb-2">
+            Fecha Tentativa del Evento <span className="text-gray-400 text-xs font-normal">(Opcional)</span>
+          </label>
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <Calendar className="h-5 w-5 text-gray-400" />
+            </div>
+            <input
+              type="date"
+              id="eventDate"
+              name="eventDate"
+              value={formData.eventDate}
+              onChange={handleChange}
+              className="block w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-200 outline-none"
             />
           </div>
         </div>
