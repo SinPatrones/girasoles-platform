@@ -224,15 +224,38 @@ export default function GallerySection() {
     return () => ctx.revert();
   }, []);
 
+  // Auto-play: advance every 4 seconds, pause on lightbox or user interaction
+  const autoplayTimer = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const resetAutoplay = useCallback(() => {
+    if (autoplayTimer.current) clearInterval(autoplayTimer.current);
+    autoplayTimer.current = setInterval(() => {
+      setActiveIndex((prev) => wrapIndex(prev + 1, TOTAL));
+    }, 4000);
+  }, []);
+
+  useEffect(() => {
+    if (isLightboxOpen) {
+      if (autoplayTimer.current) clearInterval(autoplayTimer.current);
+      return;
+    }
+    resetAutoplay();
+    return () => {
+      if (autoplayTimer.current) clearInterval(autoplayTimer.current);
+    };
+  }, [isLightboxOpen, resetAutoplay]);
+
   // Navigate to next/prev (circular)
   const goTo = useCallback((direction: number) => {
     setActiveIndex((prev) => wrapIndex(prev + direction, TOTAL));
-  }, []);
+    resetAutoplay();
+  }, [resetAutoplay]);
 
   // Navigate directly to an index
   const goToIndex = useCallback((index: number) => {
     setActiveIndex(wrapIndex(index, TOTAL));
-  }, []);
+    resetAutoplay();
+  }, [resetAutoplay]);
 
   // Touch/swipe handling
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
