@@ -8,21 +8,18 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {/* Company Info */}
-          <div className="space-y-4">
-            <div className="flex items-center space-x-3">
-              <div className="relative w-12 h-12">
+          <div className="space-y-5">
+            <Link href="/" className="group inline-block">
+              <div className="relative w-28 h-28 md:w-36 md:h-36 transition-transform duration-300 group-hover:scale-105">
+                <div className="absolute inset-0 rounded-full bg-yellow-400/15 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <Image
-                  src="/images/logo/girasoles_logo.jpg"
-                  alt="Los Girasoles Logo"
+                  src="/images/logo/girasoles_logo.png"
+                  alt="Los Girasoles - Salón de Eventos"
                   fill
-                  className="object-contain rounded-lg"
+                  className="object-contain drop-shadow-[0_2px_8px_rgba(250,204,21,0.25)] group-hover:drop-shadow-[0_4px_16px_rgba(250,204,21,0.4)] transition-all duration-300 relative z-10"
                 />
               </div>
-              <div>
-                <h3 className="text-xl font-bold text-yellow-400">Los Girasoles</h3>
-                <p className="text-xs text-gray-400">Salón de Eventos</p>
-              </div>
-            </div>
+            </Link>
             <p className="text-gray-300 text-sm leading-relaxed">
               Innovando para sorprenderte en cada celebración. Tu quinceañera merece lo mejor.
             </p>

@@ -40,22 +40,15 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3">
-            <div className="relative w-12 h-12 md:w-14 md:h-14">
+          <Link href="/" className="group relative flex items-center">
+            <div className="relative w-24 h-24 md:w-28 md:h-28 transition-transform duration-300 group-hover:scale-110">
+              <div className="absolute inset-0 rounded-full bg-primary/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <Image
-                src="/images/logo/girasoles_logo.jpg"
-                alt="Los Girasoles Logo"
+                src="/images/logo/girasoles_logo.png"
+                alt="Los Girasoles - Salón de Eventos"
                 fill
-                className="object-contain"
+                className="object-contain drop-shadow-md group-hover:drop-shadow-xl transition-all duration-300 relative z-10"
               />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl md:text-2xl font-bold text-primary">
-                Los Girasoles
-              </span>
-              <span className="text-xs text-gray-600 hidden sm:block">
-                Innovando para sorprenderte
-              </span>
             </div>
           </Link>
 
