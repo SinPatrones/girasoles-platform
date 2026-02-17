@@ -7,49 +7,44 @@ import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 const galleryImages = [
   {
-    src: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80',
+    src: '/images/galeria/galeria_01.jpg',
     title: 'Quinceañera Elegante',
     category: 'Fiesta Juvenil',
   },
   {
-    src: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80',
-    title: 'Celebración Especial',
+    src: '/images/galeria/galeria_02.jpg',
+    title: 'Decorativo',
     category: 'Evento Formal',
   },
   {
-    src: 'https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=800&q=80',
-    title: 'Decoración Premium',
+    src: '/images/galeria/galeria_03.jpg',
+    title: 'Recuerdos',
     category: 'Fiesta Juvenil',
   },
   {
-    src: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80',
+    src: '/images/galeria/galeria_04.jpg',
     title: 'Mesa Elegante',
     category: 'Evento Formal',
   },
   {
-    src: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&q=80',
-    title: 'Fiesta Inolvidable',
+    src: '/images/galeria/galeria_05.jpg',
+    title: 'Recuerdos',
     category: 'Fiesta Juvenil',
   },
   {
-    src: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80',
-    title: 'Evento Corporativo',
-    category: 'Evento Formal',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80',
-    title: 'Recepción Elegante',
-    category: 'Evento Formal',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&q=80',
-    title: 'Celebración Juvenil',
+    src: '/images/galeria/galeria_06.jpg',
+    title: 'Recuerdos',
     category: 'Fiesta Juvenil',
   },
   {
-    src: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80',
-    title: 'Gala de Aniversario',
-    category: 'Evento Formal',
+    src: '/images/galeria/galeria_07.jpg',
+    title: 'Recuerdos',
+    category: 'Fiesta Juvenil',
+  },
+  {
+    src: '/images/galeria/galeria_08.jpg',
+    title: 'Recuerdos',
+    category: 'Fiesta Juvenil',
   },
 ];
 
