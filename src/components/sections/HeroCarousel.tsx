@@ -17,7 +17,7 @@ const slides = [
     description: 'El salón de eventos perfecto para tu quinceañera',
     cta: 'Ver Paquetes',
     gradient: 'from-yellow-600/90 to-orange-600/90',
-    image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1920&q=80',
+    image: '/images/ambientes/salon_01.jpg',
   },
   {
     title: 'Tu Día Especial',
@@ -25,7 +25,7 @@ const slides = [
     description: 'Creamos experiencias mágicas que duran para siempre',
     cta: 'Explorar',
     gradient: 'from-purple-600/90 to-pink-600/90',
-    image: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1920&q=80',
+    image: '/images/ambientes/salon_02.jpg',
   },
   {
     title: 'Paquetes Premium',
@@ -33,7 +33,7 @@ const slides = [
     description: 'Opciones para todos los gustos y presupuestos',
     cta: 'Conocer Más',
     gradient: 'from-blue-600/90 to-indigo-600/90',
-    image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1920&q=80',
+    image: '/images/ambientes/salon_03.jpg',
   },
 ];
 
@@ -65,7 +65,7 @@ export default function HeroCarousel() {
           <SwiperSlide key={index}>
             <div className="relative h-full w-full flex items-center justify-center">
               {/* Background Image */}
-              <div className="absolute inset-0">
+              <div className="absolute inset-0 blur-xs">
                 <Image
                   src={slide.image}
                   alt={slide.title}
