@@ -70,9 +70,10 @@ export default function HeroCarousel() {
                   src={slide.image}
                   alt={slide.title}
                   fill
+                  sizes="100vw"
                   className="object-cover"
                   priority={index === 0}
-                  quality={90}
+                  quality={75}
                 />
               </div>
 

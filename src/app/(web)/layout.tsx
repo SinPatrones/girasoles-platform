@@ -5,7 +5,8 @@ export default function WebLayout({children}: {children: React.ReactNode}) {
   return (
     <>
       <GoogleAnalytics />
-      <IntroVideo>{children}</IntroVideo>
+      <IntroVideo />
+      {children}
     </>
   );
 }
