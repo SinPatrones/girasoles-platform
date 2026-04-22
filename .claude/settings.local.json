@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p '/mnt/d/StartUps/Moises Salon/Los Girasoles/code/girasoles-platform/src/app/\\(web\\)/ambientes' '/mnt/d/StartUps/Moises Salon/Los Girasoles/code/girasoles-platform/src/app/\\(web\\)/paquete/[slug]')",
+      "Bash(mv '/mnt/d/StartUps/Moises Salon/Los Girasoles/code/girasoles-platform/src/app/page.tsx' '/mnt/d/StartUps/Moises Salon/Los Girasoles/code/girasoles-platform/src/app/\\(web\\)/page.tsx')",
+      "Bash(mv '/mnt/d/StartUps/Moises Salon/Los Girasoles/code/girasoles-platform/src/app/ambientes/page.tsx' '/mnt/d/StartUps/Moises Salon/Los Girasoles/code/girasoles-platform/src/app/\\(web\\)/ambientes/page.tsx')",
+      "Bash(mv '/mnt/d/StartUps/Moises Salon/Los Girasoles/code/girasoles-platform/src/app/paquete/[slug]/page.tsx' '/mnt/d/StartUps/Moises Salon/Los Girasoles/code/girasoles-platform/src/app/\\(web\\)/paquete/[slug]/page.tsx')",
+      "Bash(mv '/mnt/d/StartUps/Moises Salon/Los Girasoles/code/girasoles-platform/src/app/paquete/[slug]/not-found.tsx' '/mnt/d/StartUps/Moises Salon/Los Girasoles/code/girasoles-platform/src/app/\\(web\\)/paquete/[slug]/not-found.tsx')"
+    ]
+  }
+}

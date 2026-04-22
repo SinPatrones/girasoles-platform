@@ -28,15 +28,28 @@ export default function IntroVideo({children}: {children: React.ReactNode}) {
     setSkipIntro(hasIntroCookie());
   }, []);
 
+  const INTRO_START = 2;   // seconds to seek to before playing
+  const INTRO_DURATION = 2; // seconds to play before stopping
+
   const handleCanPlayThrough = useCallback(() => {
     if (phase !== 'loading') return;
+    if (videoRef.current) {
+      videoRef.current.currentTime = INTRO_START;
+    }
     setPhase('playing');
     videoRef.current?.play().catch(() => {
-      // Autoplay blocked — skip to content
       setIntroCookie();
       setPhase('done');
     });
   }, [phase]);
+
+  const handleTimeUpdate = useCallback(() => {
+    if (!videoRef.current) return;
+    if (videoRef.current.currentTime >= INTRO_START + INTRO_DURATION) {
+      setIntroCookie();
+      setPhase('done');
+    }
+  }, []);
 
   const handleVideoEnded = useCallback(() => {
     setIntroCookie();
@@ -85,6 +98,7 @@ export default function IntroVideo({children}: {children: React.ReactNode}) {
               playsInline
               preload="auto"
               onCanPlayThrough={handleCanPlayThrough}
+              onTimeUpdate={handleTimeUpdate}
               onEnded={handleVideoEnded}
               className={`w-full h-full object-contain md:object-cover absolute inset-0 transition-opacity duration-300 ${
                 phase === 'playing' ? 'opacity-100' : 'opacity-0'
