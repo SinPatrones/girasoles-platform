@@ -1,6 +1,6 @@
 'use client';
 
-import {useRef, useState, useEffect, useCallback} from 'react';
+import {useRef, useState, useCallback, useSyncExternalStore} from 'react';
 import {AnimatePresence, motion} from 'framer-motion';
 import Image from 'next/image';
 
@@ -19,14 +19,13 @@ function setIntroCookie() {
 type Phase = 'loading' | 'playing' | 'done';
 
 export default function IntroVideo({children}: {children: React.ReactNode}) {
-  const [skipIntro, setSkipIntro] = useState<boolean | null>(null);
+  const skipIntro = useSyncExternalStore(
+    () => () => {},   // cookies have no subscribe mechanism
+    hasIntroCookie,   // client snapshot
+    () => false,      // server snapshot
+  );
   const [phase, setPhase] = useState<Phase>('loading');
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  // Check cookie on mount (client only)
-  useEffect(() => {
-    setSkipIntro(hasIntroCookie());
-  }, []);
 
   const INTRO_START = 2;   // seconds to seek to before playing
   const INTRO_DURATION = 2; // seconds to play before stopping
@@ -56,10 +55,6 @@ export default function IntroVideo({children}: {children: React.ReactNode}) {
     setPhase('done');
   }, []);
 
-  // Still resolving cookie check
-  if (skipIntro === null) return null;
-
-  // Cookie exists — go straight to content
   if (skipIntro) return <>{children}</>;
 
   return (
