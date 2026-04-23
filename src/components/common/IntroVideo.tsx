@@ -39,6 +39,18 @@ export default function IntroVideo() {
     };
   }, [skipIntro, phase]);
 
+  // preload="none" prevents the browser from loading the video automatically.
+  // Calling load() here triggers the download only when the overlay is active.
+  useEffect(() => {
+    if (skipIntro) return;
+    videoRef.current?.load();
+  }, [skipIntro]);
+
+  const handleVideoError = useCallback(() => {
+    setIntroCookie();
+    setPhase('done');
+  }, []);
+
   const handleCanPlayThrough = useCallback(() => {
     if (phase !== 'loading') return;
     if (videoRef.current) {
@@ -100,6 +112,7 @@ export default function IntroVideo() {
           onCanPlayThrough={handleCanPlayThrough}
           onTimeUpdate={handleTimeUpdate}
           onEnded={handleVideoEnded}
+          onError={handleVideoError}
           className={`w-full h-full object-contain md:object-cover absolute inset-0 transition-opacity duration-300 ${
             phase === 'playing' ? 'opacity-100' : 'opacity-0'
           }`}
