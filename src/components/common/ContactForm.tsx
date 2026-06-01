@@ -1,10 +1,15 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, User, Mail, Phone, MessageSquare, Calendar } from 'lucide-react';
+import ReCAPTCHA from 'react-google-recaptcha';
+
+const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? '';
 
 export default function ContactForm() {
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,6 +18,8 @@ export default function ContactForm() {
     message: '',
   });
 
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const [recaptchaError, setRecaptchaError] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
@@ -23,18 +30,36 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!recaptchaToken) {
+      setRecaptchaError(true);
+      return;
+    }
+
+    setRecaptchaError(false);
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', phone: '', eventDate: '', message: '' });
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, recaptchaToken }),
+      });
 
-      setTimeout(() => {
-        setSubmitStatus('idle');
-      }, 5000);
-    }, 1500);
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', phone: '', eventDate: '', message: '' });
+        setRecaptchaToken(null);
+        recaptchaRef.current?.reset();
+        setTimeout(() => setSubmitStatus('idle'), 5000);
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -163,6 +188,24 @@ export default function ContactForm() {
           </div>
         </div>
 
+        {/* ReCAPTCHA */}
+        <div className="flex flex-col items-center gap-1">
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            sitekey={RECAPTCHA_SITE_KEY}
+            onChange={(token) => {
+              setRecaptchaToken(token);
+              setRecaptchaError(false);
+            }}
+            onExpired={() => setRecaptchaToken(null)}
+          />
+          {recaptchaError && (
+            <p className="text-sm text-red-500">
+              Por favor, completa la verificación de seguridad.
+            </p>
+          )}
+        </div>
+
         {/* Submit Button */}
         <motion.button
           type="submit"
@@ -196,6 +239,17 @@ export default function ContactForm() {
             className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg text-center"
           >
             ¡Mensaje enviado con éxito! Nos contactaremos pronto.
+          </motion.div>
+        )}
+
+        {/* Error Message */}
+        {submitStatus === 'error' && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg text-center"
+          >
+            Ocurrió un error al enviar el mensaje. Por favor, inténtalo nuevamente.
           </motion.div>
         )}
       </form>
