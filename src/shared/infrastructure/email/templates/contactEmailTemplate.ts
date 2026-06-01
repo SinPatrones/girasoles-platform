@@ -73,7 +73,7 @@ export function contactEmailTemplate(data: ContactRequest): string {
             <td style="padding: 20px 40px 32px; text-align: center; border-top: 1px solid #f3f4f6;">
               <p style="margin: 0; color: #9ca3af; font-size: 12px;">
                 Este correo fue generado automáticamente desde el formulario de contacto de
-                <strong style="color: #6b7280;">losgirasoles.pe</strong>
+                <strong style="color: #6b7280;">losgirasoleseventos.com</strong>
               </p>
             </td>
           </tr>
