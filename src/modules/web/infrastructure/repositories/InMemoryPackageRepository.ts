@@ -81,7 +81,7 @@ const packages: Package[] = [
     id: '2',
     name: 'Intermedio',
     slug: 'intermedio',
-    price: 9999,
+    price: 11999,
     description: 'Experiencia mejorada con video profesional, cabinas de fotos y servicios ampliados',
     heroImage: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80',
     capacity: {
@@ -160,7 +160,7 @@ const packages: Package[] = [
     id: '3',
     name: 'Premium',
     slug: 'premium',
-    price: 12999,
+    price: 15000,
     description: 'Experiencia completa con event planner, fotografía profesional, coreógrafo y amenidades premium',
     heroImage: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1920&q=80',
     capacity: {
@@ -252,7 +252,7 @@ const packages: Package[] = [
     id: '4',
     name: 'Top Golden',
     slug: 'top-golden',
-    price: 16999,
+    price: 19500,
     description: 'Paquete de lujo con 2 DJs profesionales, coreografía avanzada, catering gourmet y amenidades exclusivas',
     heroImage: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1920&q=80',
     capacity: {
